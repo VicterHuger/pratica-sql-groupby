@@ -26,8 +26,8 @@ GROUP BY r.name;
 
 --Bônus
 
-SELECT s.name as school, c.name as course, COUNT(e.userId) as "studentsCount"
-FROM educations
+SELECT s.name as school, c.name as course, COUNT(e."userId") as "studentsCount"
+FROM educations e
 JOIN schools s
 ON e."schoolId"=s.id
 JOIN courses c
@@ -35,4 +35,4 @@ ON e."courseId"=c.id
 WHERE 
 (e.status='ongoing' OR e.status='finished')
 GROUP BY s.name, c.name
-ORDER BY "studentsCount" DESC OFFSET LIMIT 3;  
+ORDER BY "studentsCount" DESC OFFSET 0 LIMIT 3;   
